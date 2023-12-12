@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import { StyledButton, StyledButtonDiv } from './Button.styled';
 
 export const Button = ({ onClick }) => {
   return (
@@ -8,22 +8,3 @@ export const Button = ({ onClick }) => {
     </StyledButtonDiv>
   );
 };
-
-const StyledButtonDiv = styled.div`
-  display: flex;
-  justify-content: center;
-`;
-
-const StyledButton = styled.button`
-  border: none;
-  color: white;
-  background-color: #383fa7;
-  padding: 5px 20px;
-  border-radius: 5px;
-  cursor: pointer;
-  margin-bottom: 20px;
-
-  &:hover {
-    background-color: #4d57e5;
-  }
-`;

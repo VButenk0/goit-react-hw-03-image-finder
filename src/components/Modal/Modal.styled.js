@@ -13,8 +13,8 @@ export const ModalWrapper = styled.div`
 export const ModalContent = styled.div`
   position: relative;
   background-color: white;
-  overflow: hidden;
   width: 55%;
+  box-shadow: 2px 2px 3px black;
 `;
 
 export const ModalImg = styled.img`

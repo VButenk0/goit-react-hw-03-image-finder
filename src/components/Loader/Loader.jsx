@@ -1,26 +1,19 @@
 import React from 'react';
-import { MutatingDots } from 'react-loader-spinner';
-import styled from 'styled-components';
+import { ProgressBar } from 'react-loader-spinner';
+import { StyledLoader } from './Loader.styled';
 
 export const Loader = () => {
   return (
     <StyledLoader>
-      <MutatingDots
-        height="100"
-        width="100"
-        color="#364fdd"
-        secondaryColor="#e6de3a"
-        radius="12.5"
-        ariaLabel="mutating-dots-loading"
+      <ProgressBar
+        height="80"
+        width="80"
+        ariaLabel="progress-bar-loading"
         wrapperStyle={{}}
-        wrapperClass=""
-        visible={true}
+        wrapperClass="progress-bar-wrapper"
+        borderColor="#383fa7"
+        barColor="#383fa7"
       />
     </StyledLoader>
   );
 };
-
-const StyledLoader = styled.div`
-  display: flex;
-  justify-content: center;
-`;

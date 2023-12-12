@@ -13,6 +13,7 @@ export class App extends Component {
     isShowLoadMore: false,
     isOpenModal: false,
     currentImg: null,
+    isNewSearch: false,
 
     q: '',
     page: 1,
@@ -22,7 +23,10 @@ export class App extends Component {
   componentDidMount() {}
 
   componentDidUpdate(_, prevState) {
-    if (prevState.page !== this.state.page) {
+    if (
+      (prevState.page !== this.state.page || this.state.isNewSearch) &&
+      !this.state.isLoading
+    ) {
       this.getDataFromApi();
     }
   }
@@ -30,7 +34,11 @@ export class App extends Component {
   getDataFromApi = async () => {
     const { q, page, per_page } = this.state;
     try {
-      this.setState({ isLoading: true, isShowLoadMore: true });
+      this.setState({
+        isLoading: true,
+        isShowLoadMore: true,
+        isNewSearch: false,
+      });
       const { hits } = await getPhotoByQuery(q, page, per_page);
       this.setState(prev => ({ images: [...prev.images, ...hits] }));
     } catch (error) {
@@ -46,7 +54,7 @@ export class App extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    this.getDataFromApi();
+    this.setState(() => ({ images: [], page: 1, isNewSearch: true }));
   };
 
   incrementPage = () => {
@@ -54,7 +62,7 @@ export class App extends Component {
   };
 
   handleToggleModal = () => {
-    this.setState(prevState => ({ isOpenModal: !prevState.isOpenModal }));
+    this.setState(prev => ({ isOpenModal: !prev.isOpenModal }));
   };
 
   handleClickImg = image => {

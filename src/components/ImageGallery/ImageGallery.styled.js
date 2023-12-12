@@ -8,4 +8,5 @@ export const StyledImageGallery = styled.ul`
   gap: 15px;
 
   padding: 10px;
+  margin: 0;
 `;
