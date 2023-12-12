@@ -40,6 +40,11 @@ export class App extends Component {
         isNewSearch: false,
       });
       const { hits } = await getPhotoByQuery(q, page, per_page);
+      if (hits.length < 12) {
+        this.setState({
+          isShowLoadMore: false,
+        });
+      }
       this.setState(prev => ({ images: [...prev.images, ...hits] }));
     } catch (error) {
       alert(error.response.data);

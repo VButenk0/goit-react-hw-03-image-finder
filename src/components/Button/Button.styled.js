@@ -12,7 +12,7 @@ export const StyledButton = styled.button`
   padding: 5px 25px;
   border-radius: 5px;
   cursor: pointer;
-  margin: 5px auto;
+  margin: 10px auto 20px;
 
   &:hover {
     background-color: #4d57e5;
